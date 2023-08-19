@@ -272,6 +272,7 @@ window.onload=function () {
         }
       }
     }
+ 
     
     function getName(parentElement){
       let taskName = parentElement.querySelector("td:first-child h2").textContent;
@@ -331,4 +332,6 @@ window.onload=function () {
       }
     }
   
+
   
+
