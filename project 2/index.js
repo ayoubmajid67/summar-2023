@@ -294,7 +294,7 @@ function editTask(thisElement ) {
         else {
      EditFromLocalStorage(getName(ParentTr),newTaskValue);  
       changeTaskName(ParentTr,newTaskValue); 
-   
+        LOcalStorageData=JSON.parse(localStorage.getItem("taskName")); 
         
         }  
         RemoveClass(ParentTr,"editBtnHover");
