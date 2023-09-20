@@ -38,6 +38,10 @@ body{
    flex-shrink: 0;
    flex-basis: 24vw;
    transition: all 1s ;
+ position: sticky !important;
+top: 0px;
+left: 0;
+z-index: 1;
 
 
 }
