@@ -525,3 +525,448 @@ function getPostsWithFiltering() {
 getPostsWithFiltering();
 
 
+
+// PROMISES : 
+
+/*
+one of the  the raison onf foundation of promises it's the problem 
+of callback hell 
+
+anything return promise it will  be apple to you use then after it 
+
+
+the code in then will call when the resolve in promise will  call
+
+*/
+
+// promise it 's a class you need to create a new instant to using it : 
+new Promise((resolve, reject) => {
+    
+})
+
+//  the  code written in the promise is an  asynchronism code : 
+new Promise((resolve, reject) => {
+  // async code : 
+
+  if(isSecureContext){
+      resolve(); 
+  }else{
+
+      reject(); 
+  }
+
+
+})
+
+
+
+// create new promise : 
+
+//  1-part : create  the async code : 
+let p = new Promise((resolve, reject) => {
+	// async code :
+                         
+	if (isSecureContext) {
+    // if  condition valid the resolve function will be called : 
+		resolve();
+	} else {
+    // else the reject function will be called : 
+		reject();
+	}
+});
+
+// part 2 : handel with response  : 
+
+// after this if the resolve function called  then the then function will call 
+p.then(function () {
+	console.log("calling then");
+});
+
+// else (the promise rejected ) the catch function will be calling : 
+p.catch(function () {
+	console.log("error ");
+});
+
+ 
+//EXAMPLE : 
+let h3 = document.querySelector("h3");
+
+let p1 = new Promise((resolve, reject) => {
+	let flag = true;
+
+	if (flag) {
+		setTimeout(() => {
+			h3.style.visibility = "visible";
+		}, 1000);
+
+		resolve("the visibility of h3 changed with successfully : ");
+	} else {
+		reject("error");
+	}
+});
+
+p.then((successMsg) => {
+	console.log(successMsg);
+});
+p.catch((ErrorMsg) => {
+	console.error(ErrorMsg);
+});
+
+/*
+
+Hello world is printed first because the JavaScript engine executes code synchronously, line by line.
+ When the engine reaches the `console.log("hello world");` line, it executes it immediately and prints
+  "hello world" to the console.
+
+The `Promise` object is asynchronous, meaning that the code inside of the `then()` and `catch()` 
+callbacks will not be executed until the promise is fulfilled or rejected. In this case, the promise 
+is fulfilled immediately, but the engine does not execute the `then()`
+ callback until after it has finished executing   the rest of the code in the script.
+
+To see this in action, you can add a `setTimeout()` function to the `then()` callback:
+*/
+```javascript
+let p = new Promise((resolve, reject) => {
+
+        resolve("the visibility of h3 changed with successfully : ");
+});
+
+p.then((successMsg) => {
+    setTimeout(() => {
+        console.log(successMsg);
+    }, 1000);
+});
+p.catch((ErrorMsg) => {
+    console.error(ErrorMsg);
+});
+
+console.log("hello world");
+```
+/*
+
+Now, when you run the script, you will see "hello world" printed to the console immediately, followed by
+ the success message from the promise one second later.
+
+This is the behavior of the JavaScript engine because it is designed to be efficient. 
+By executing code synchronously, the engine can avoid the overhead of switching back 
+and forth between different contexts. However, this can also lead to some unexpected behavior, 
+as in this case.
+
+If you need to ensure that code is executed after a promise is fulfilled or rejected, 
+you can use the `await` keyword. The `await` keyword will cause the engine to pause execution
+ of the current function until the promise is fulfilled or rejected. This can be useful for 
+ ensuring that code is executed in a specific order, or for handling errors.
+*/
+
+// example : Promises Chain : 
+let Headers = document.querySelectorAll("h3");
+
+new Promise((resolve, reject) => {
+	setTimeout(() => {
+		console.log("first header ");
+
+		Headers[0].style.color = "red";
+		resolve("second  header :");
+	}, 1000);
+})
+	.then((UserMsg) => {
+		console.log(UserMsg);
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				Headers[1].style.color = "red";
+				resolve("third header :");
+			}, 1000);
+		});
+	})
+	.then((UserMsg) => {
+		console.log(UserMsg);
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				Headers[2].style.color = "red";
+			}, 1000);
+		});
+	});
+
+
+
+  // fetch function : 
+  ```
+  fetch is a JavaScript function that allows you to make network requests (typically HTTP requests) to
+  fetch resources from a network, such as JSON data from a REST API, HTML from a website, or other types
+  of data. It's widely used in modern web development for making asynchronous requests to web servers.
+  ```
+  fetch(url, options)
+/*
+✨url: The URL of the resource you want to fetch.
+options (optional): An object containing various options for the request, 
+including the HTTP method, headers, request body, and more.
+✨Creating a Request:
+When you call fetch, it creates and returns a Promise that represents the future response to the request. However, the request is not sent immediately; it's only prepared at this stage.
+
+✨Configuring the Request:
+You can specify various options in the options object to configure the request:
+
+     ✨method: The HTTP method (e.g., 'GET', 'POST', 'PUT', 'DELETE') to use for the request.
+        headers: An object containing the HTTP headers for the request, such as 'Content-Type' and 
+        'Authorization'.
+
+     ✨body: The request body, typically used for sending data in POST or PUT requests. 
+        It should be a string or a FormData object.
+
+     ✨mode: The request mode (e.g., 'cors', 'no-cors', 'same-origin') that defines how cross-origin 
+       requests are handled.
+
+     ✨credentials: Indicates whether to include cookies or credentials with the request 
+       ('same-origin', 'include', 'omit').
+
+     ✨cache: The caching mode for the request ('default', 'no-store', 'reload', etc.).
+
+     ✨redirect: How to handle redirects ('follow', 'error', 'manual').
+     And more.
+*/
+
+
+//✨Sending the Request:
+/*
+To actually send the request, you need to call .then() or use async/await on the returned Promise. 
+This initiates the network request to the specified URL with the provided options.
+*/
+fetch(url, options)
+  .then(response => {
+    // Handle the response here
+  })
+  .catch(error => {
+    // Handle errors here
+  });
+
+//✨Handling the Response:
+/*
+Once the request is sent, the fetch function returns a Promise that resolves with a Response object representing the response from the server. You can then use methods and properties of this Response object to handle the response data.
+
+Common methods and properties of the Response object include:
+
+   .json(): Parses the response body as JSON.
+   .text(): Reads the response body as text.
+   .blob(): Returns the response body as a binary Blob.
+   .headers: Access to the response headers.
+   .status: HTTP status code (e.g., 200 for OK, 404 for Not Found).
+   .statusText: HTTP status message (e.g., "OK", "Not Found").
+*/
+
+
+//✨Handling Errors:
+/*
+If the network request fails or encounters an error (e.g., due to a network issue, 
+invalid URL, or server error), the Promise is rejected, and you can catch the error using .catch().
+
+Here's an example of using fetch to make a GET request and handle the response:
+
+*/
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse response body as JSON
+  })
+  .then(data => {
+    console.log(data); // Process the JSON data
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+
+
+// The `fetch` API is structured around a set of classes and objects that allow you to interact with 
+// network requests and responses. Understanding the structure of these classes can help you work 
+// with the API more effectively. Here are some of the key classes and objects in the `fetch` API:
+
+
+"1. **`fetch` Function**:"
+/*
+ 
+The `fetch` function is the entry point to making network requests. It returns a
+    `Promise` that resolves to a `Response` object representing the response to the request.
+*/  
+"2. **`Request` Class**:"
+  //  The `Request` class represents a network request that you can create and configure before 
+  //  passing it to the `fetch` function. It has a constructor that takes a URL and an optional 
+  //  options object to configure the request.
+
+   ```javascript
+   const request = new Request(url, options);
+   ```
+
+"3. **`Response` Class**:"
+  //  The `Response` class represents the response to a network request. It provides
+  //   methods and properties to access various aspects of the response, including 
+  //   the response body, headers, status code, and more.
+
+   fetch(url)
+     .then(response => {
+       // response is an instance of the Response class
+       // you can use methods like response.json(), response.text(), etc.
+     });
+ 
+
+  //  Common methods and properties of the `Response` class include:
+  //  - `.json()`: Parses the response body as JSON.
+  //  - `.text()`: Reads the response body as text.
+  //  - `.blob()`: Returns the response body as a binary Blob.
+  //  - `.headers`: Access to the response headers.
+  //  - `.status`: HTTP status code (e.g., 200 for OK, 404 for Not Found).
+  //  - `.statusText`: HTTP status message (e.g., "OK", "Not Found").
+
+"4. ** Headers` Class**:"
+  //  The `Headers` class represents a collection of HTTP headers associated with a 
+  //  request or response. You can use it to manipulate headers before sending a request
+  //   or after receiving a response.
+
+   
+   const headers = new Headers();
+   headers.append('Content-Type', 'application/json');
+   headers.set('Authorization', 'Bearer Token');
+
+
+"5. **`FormData` Class**:"
+  //  The `FormData` class allows you to create and manipulate form data that can be sent in a 
+  //  network request. You can use it to build and send form data in a POST request.
+
+
+   const formData = new FormData();
+   formData.append('username', 'john_doe');
+   formData.append('password', 'secure_password');
+
+
+"6. **`URL` and `URLSearchParams` Classes**: "
+  //  The `URL` class represents a URL, and the `URLSearchParams` class is used for working 
+  //  with URL query parameters. You can use these classes to parse and manipulate URLs.
+
+  
+   const url = new URL('https://example.com/api');
+   url.searchParams.append('param1', 'value1');
+   url.searchParams.append('param2', 'value2');
+
+//example of fetching data from placeholder API : 
+let posts = "https://jsonplaceholder.typicode.com/posts?userId=";
+let Users = "https://jsonplaceholder.typicode.com/users";
+
+function GetUsers() {
+	return new Promise((resolve, reject) => {
+		fetch(Users)
+			.then((response) => {
+				if (!response.ok) throw new Error("there has been an Error in Fetching UsersData from the Sever ");
+
+				return response.json();
+			})
+			.then((Users) => {
+				console.log("Users ", Users);
+				resolve();
+			})
+			.catch((ErrorMsg) => {
+				reject(ErrorMsg);
+			});
+	});
+}
+
+function GetPosts(UserId) {
+	return new Promise((resolve, reject) => {
+		fetch(posts+UserId)
+			.then((response) => {
+				if (!response.ok) throw new Error("there has been an Error in Fetching PostsData from the Sever ");
+
+				return response.json();
+			})
+			.then((Posts) => {
+				console.log("Posts : ", Posts);
+				resolve();
+			})
+			.catch((ErrorMsg) => {
+				reject(ErrorMsg);
+			});
+	});
+}
+
+
+
+//axios in js :  get Users Using axios library : 
+// auto catch of errors : 
+function getUsersAxios() {
+	return new Promise((resolve, reject) => {
+	  axios
+		.get(Users)
+		.then((response) => {
+		  return response.data;
+		})
+		.then((Users) => {
+		  console.log(Users);
+		  resolve();
+		})
+		.catch((error) => {
+		  reject(error);
+		});
+	});
+  }
+  
+  function getPostsAxios(UserId) {
+	let PostUrl = posts + UserId;
+
+		axios
+		  .get(PostUrl)
+		  .then((response) => {
+			return response.data;
+		  })
+		  .then((Posts) => {
+			console.log(Posts);
+			
+		  })
+		  .catch((error) => {
+			reject(error);
+		  });
+	
+  }
+  
+  getUsersAxios()
+	.then(() => {
+	  return getPostsAxios(1);
+	})
+	.catch((error) => {
+	  console.log("Error From :", error);
+	})
+
+// npm  node package manager : 
+
+//✨download node js :  node -v to know the version 
+
+//✨initialize the project => npm init 
+
+//✨ install library : npm install libraryName --save(save in in package.json) 
+//✨package.json : information about library that you have installed : 
+//✨node modules : contain the code of  all library
+//✨lock.json specify information about library : 
+
+// ✨important information : 
+/*
+  if you use just  write :  npn install
+  the npm will take information library 
+  in the package file then it will install it and add  to your 
+  project 
+  very helpful when you work in a team and you want to install the library 
+  of  your team to work with, you just need to get the package file 
+  then write the npm install command then the npm will install 
+  all library  in the package.json with the same specification : 
+
+*/
+ 
+//✨last step  import axios from node modules  ✔️
+/**
+ * 
+ you use the require just when you  working with frameworks :(Angular,React...)
+
+ due to we work just with pure js we need to import the axios.js 
+ manually   
+ like this :
+ <script src="../node_modules/axios/axios.js"></script>
+ or :
+ <script src="../node_modules/axios/dist/axios.min.js"></script>
+*/
