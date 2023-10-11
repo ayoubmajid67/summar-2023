@@ -1,6 +1,6 @@
 const today = new Date();
 const dateStr = today.toDateString();
-let PrayerTimeUrl = "http://api.aladhan.com/v1/timingsByCity?&country=Morocco&method=3&city=";
+let PrayerTimeUrl = "https://api.aladhan.com/v1/timingsByCity?&country=Morocco&method=3&city=";
 function setCityInfoToDom(City) {
 	CitySearchInput.value = City;
 	cityContainer.style.display = "none";
