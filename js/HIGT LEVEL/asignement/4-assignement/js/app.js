@@ -27,7 +27,7 @@ function GetCityPrayerTime(City) {
 			const PrayerTimes = data.data.timings;
 			setPrayerTimesToDom(PrayerTimes);
 		})
-		.cath((error) => {
-			alert("Error", error, " 😒");
-		});
+        .catch((error) => {
+            console.error("Axios error:", error);
+          });
 }
