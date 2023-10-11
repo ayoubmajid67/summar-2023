@@ -135,8 +135,10 @@ request.onload = function () {
 
 
 /*
-In JavaScript, you can work with network requests using the `XMLHttpRequest` object or the more modern `fetch` API
-. When dealing with network requests, you typically encounter various states in the lifecycle of the request. Here's 
+In JavaScript, you can work with network requests using the `XMLHttpRequest` object or the more
+ modern `fetch` API
+. When dealing with network requests, you typically encounter various states in the lifecycle 
+of the request. Here's 
 a detailed explanation of the states for both `XMLHttpRequest` and `fetch`:
 
 **Using XMLHttpRequest:**
@@ -371,7 +373,7 @@ class Circle {
 
 // set response type json in postman 
 
-// headers : =>"Accept:"application.json"
+// headers : =>"Accept:"application/json"
 
 // set headers params: 
 request.setRequestHeader('key','value'); 
@@ -529,10 +531,10 @@ getPostsWithFiltering();
 // PROMISES : 
 
 /*
-one of the  the raison onf foundation of promises it's the problem 
+one of   the raison of foundation of promises it's the problem 
 of callback hell 
 
-anything return promise it will  be apple to you use then after it 
+anything return promise it will  be able to you use then after it 
 
 
 the code in then will call when the resolve in promise will  call
@@ -701,7 +703,8 @@ new Promise((resolve, reject) => {
 options (optional): An object containing various options for the request, 
 including the HTTP method, headers, request body, and more.
 ✨Creating a Request:
-When you call fetch, it creates and returns a Promise that represents the future response to the request. However, the request is not sent immediately; it's only prepared at this stage.
+When you call fetch, it creates and returns a Promise that represents the future response to the request.
+ However, the request is not sent immediately; it's only prepared at this stage.
 
 ✨Configuring the Request:
 You can specify various options in the options object to configure the request:
@@ -741,7 +744,9 @@ fetch(url, options)
 
 //✨Handling the Response:
 /*
-Once the request is sent, the fetch function returns a Promise that resolves with a Response object representing the response from the server. You can then use methods and properties of this Response object to handle the response data.
+Once the request is sent, the fetch function returns a Promise that resolves 
+with a Response object representing the response from the server.
+ You can then use methods and properties of this Response object to handle the response data.
 
 Common methods and properties of the Response object include:
 
@@ -890,6 +895,27 @@ function GetPosts(UserId) {
 
 
 //axios in js :  get Users Using axios library : 
+const axios = require("axios"); // Import Axios in a Node.js environment
+
+// Example: Making a POST request with request body parameters
+axios.post("https://example.com/api/resource", {
+  key1: "value1",
+  key2: "value2",
+}, {
+  headers: {
+    // Define your custom headers here
+    "Content-Type": "application/json", // Set the appropriate content  type
+    Authorization: "Bearer your-access-token", // Optional: Include an authorization header
+  },
+})
+  .then((response) => {
+    console.log(response.data); // Process the data from the response
+  })
+  .catch((error) => {
+    console.error("Axios error:", error);
+  });
+
+
 // auto catch of errors : 
 function getUsersAxios() {
 	return new Promise((resolve, reject) => {
@@ -934,6 +960,8 @@ function getUsersAxios() {
 	  console.log("Error From :", error);
 	})
 
+
+
 // npm  node package manager : 
 
 //✨download node js :  node -v to know the version 
@@ -943,7 +971,7 @@ function getUsersAxios() {
 //✨ install library : npm install libraryName --save(save in in package.json) 
 //✨package.json : information about library that you have installed : 
 //✨node modules : contain the code of  all library
-//✨lock.json specify information about library : 
+//✨lock.json specify version  of  libraries : 
 
 // ✨important information : 
 /*

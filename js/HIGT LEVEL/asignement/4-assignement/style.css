@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+
+}
+
+
+body {
+    background: linear-gradient(40deg, rgb(62, 16, 88), black);
+
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 50px;
+    padding: 20px;
+    color: white;
+    min-height: 100vh;
+    justify-content: space-evenly;
+    padding: 20px;
+    background-image: url('./img/Mainback.jpg');
+    background-size: cover;
+    background-blend-mode: color;
+    background-color: rgba(0, 0, 0, 0.874);
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* head container styling  */
+.container .headContainer {
+
+    padding: 20px 2px;
+    margin-top: -2.5%;
+}
+
+.headContainer h1 {
+    font-size: 3.7em;
+    text-wrap: nowrap;
+    padding-bottom: 10px 0;
+}
+
+.headContainer h4 {
+    font-size: 1.5em;
+    opacity: 0.8;
+
+    color: #ccc;
+    font-weight: 350;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccccccab;
+    text-wrap: nowrap;
+}
+
+/* prayer time container styling :  */
+.container .prayerTimeContainer {
+
+
+    display: flex;
+    flex-flow: row wrap;
+
+    gap: 5%;
+    justify-content: space-around;
+
+}
+
+/* prayerTimeContainer Article  */
+.prayerTimeContainer article {
+    background-color: rgba(70, 43, 13, 0.134);
+    color: white;
+
+    box-shadow: 0px 2px 2px white;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+    justify-content: space-between;
+    width: 150px;
+    margin-bottom: 30px;
+
+}
+
+.prayerTimeContainer article h3 {
+    color: white;
+    background-color: rgb(188, 106, 7);
+
+    padding: 10px 14px;
+
+    font-size: 1.23em;
+    filter: brightness(80%);
+
+}
+
+.prayerTimeContainer article h1 {
+    font-weight: 900;
+    padding: 20px;
+    text-align: center;
+}
+
+/* city container  */
+
+.CityContainer {
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+}
+
+.CityContainer input {
+
+    padding: 10px 20px;
+    width: 30%;
+    min-width: 300px;
+    outline: none;
+    border: none;
+    border-bottom: 4px solid black;
+    transition: 0.5s;
+    border-radius: 2px 5px;
+    color: black;
+    font-size: 1em;
+
+}
+
+
+
+#ListOfCity {
+
+    background-color: white;
+
+
+    list-style: none;
+    width: 30%;
+    min-width: 300px;
+    display: flex;
+    padding: 10px 20px;
+    flex-flow: column nowrap;
+    gap: 20px;
+    color: black;
+    display: none;
+
+}
+
+#ListOfCity li {
+
+    border-bottom: 0.7px solid rgba(0, 0, 0, 0.44);
+    opacity: 0.9;
+    font-weight: 550;
+
+    padding-right: 5px;
+    padding: 7px;
+    font-size: 1.14em;
+}
+
+#ListOfCity li:last-child {
+
+    margin-bottom: 12px;
+
+
+}
+
+#ListOfCity ul {
+    list-style: none;
+}
+
+#ListOfCity ul h4 {
+    margin-bottom: 10px;
+    margin-right: -5px;
+    color: rgb(20, 4, 50);
+    font-weight: 800;
+    font-size: 1.37em;
+    text-wrap: nowrap;
+
+}
+
+@media (max-width:1185px) {
+    #ListOfCity ul h4 {
+        font-size: 0.94em;
+
+    }
+}
+
+@media (max-width:713px) {
+    .headContainer h1 {
+        font-size: 2.9em;
+    }
+
+    .headContainer h4 {
+        font-size: 1.1em;
+    }
+
+    #ListOfCity {
+        font-size: 0.72em;
+    }
+}
+
+@media (max-width:560px) {
+
+    #ListOfCity,
+    .CityContainer input {
+        min-width: initial;
+        width: 70%;
+    }
+
+    #ListOfCity {
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width:441px) {
+    .headContainer h1 {
+        font-size: 1.9em;
+    }
+
+    .headContainer h4 {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width:350px) {
+    .headContainer h1 {
+        font-size: 1.6em;
+    }
+
+    .CityContainer input {
+        font-size: 0.7em;
+    }
+
+    #ListOfCity ul h4 {
+        font-size: 0.92em;
+
+    }
+
+}
+
+@media (max-width:295px) {
+
+    .CityContainer input {
+        font-size: 0.54em;
+    }
+
+    #ListOfCity ul h4 {
+        font-size: 0.8em;
+
+    }
+
+}
+
+@media (max-width:225px) {
+    .headContainer h1 {
+        font-size: 1em;
+    }
+
+    .headContainer h4 {
+        font-size: 0.5em;
+    }
+
+    #ListOfCity,
+    .CityContainer input {
+        width: 100%;
+        font-size: 0.5em;
+    }
+
+}
+
+@media (max-width:170px) {
+    .headContainer h1 {
+        font-size: 0.8em;
+    }
+
+    .headContainer h4 {
+        font-size: 0.4em;
+    }
+
+    #ListOfCity,
+    .CityContainer input {
+        font-size: 0.2em;
+    }
+
+    #ListOfCity ul h4 {
+        font-size: 0.2em;
+
+
+    }
+
+}
+
+@media (max-width:140px) {
+    .container {
+        display: none;
+    }
+
+    body {
+        background-image: url('./img/Mainback.jpg');
+        background-size: cover;
+        background-blend-mode: color;
+        background-color: rgba(0, 0, 0, 0.874);
+        background-position: center;
+        background-attachment: fixed;
+    }
+}

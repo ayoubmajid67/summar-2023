@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>prayer times</title>
+		<link rel="stylesheet" href="./style.css" />
+
+		<!-- google font  cdn  -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Ruwudu:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="headContainer">
+				<h1>المدينة</h1>
+				<h4>اليوم &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date</h4>
+			</div>
+
+			<div class="prayerTimeContainer">
+				<article class="Sunrise">
+					<h3>الشروق</h3>
+					<h1>00:00</h1>
+				</article>
+				<article class="Salat Fajr">
+					<h3>الفجر</h3>
+					<h1>00:00</h1>
+				</article>
+
+				<article class="Salat Aduher">
+					<h3>الضهر</h3>
+					<h1>00:00</h1>
+				</article>
+
+				<article class="Salat Asr">
+					<h3>العصر</h3>
+					<h1>00:00</h1>
+				</article>
+				<article class="Salat Maghrib">
+					<h3>المغرب</h3>
+					<h1>00:00</h1>
+				</article>
+				<article class="Salat Isha">
+					<h3>العشاء</h3>
+					<h1>00:00</h1>
+				</article>
+			</div>
+
+			<div class="CityContainer" id="CityContainer">
+				<input list="items" id="searchCityInput" name="search" placeholder="   من فضلك ادخل المدينة" />
+				<ul id="ListOfCity">
+					<ul class="side1">
+						<h4>1- جهة طنجة تطوان الحسيمة</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">طنجة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تطوان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">العرائش</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أصيلة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">اكزناية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الفنيدق</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مرتيل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المضيق</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">واد لو</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الحسيمة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بني بوعياش</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إمزورن</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تارجيست</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أجدير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">القصر الكبير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">شفشاون</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">وزان</li>
+					</ul>
+
+					<ul class="side2">
+						<h4>2- جهة الشرق</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">وجدة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بني درار</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">النعيمة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أحفير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">عين الركادة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أكليم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بركان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">السعيدية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي سليمان الشراعة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">دبدو</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">العيون الشرقية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تاوريرت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">جرادة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">عين بني مطهر</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تويسيت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوعرفة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">فكيك</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">العروي</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بني انصار</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الناظور</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">زايو</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أزغنغان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">رأس الماء</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سلوان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الدريوش</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">ميضار</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بن الطيب</li>
+					</ul>
+
+					<ul class="side3">
+						<h4>3- جهة فاس مكناس</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">فاس</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">جماعة المشور فاس الجديد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مكناس</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المشور الستينية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوفكران</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تولال</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المولاي ادريس زرهون</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">ويسلان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بولمان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إيموزار مرموشة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">ميسور</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أوطاط الحاج</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">البهاليل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">منزل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إيموزار كندر</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الرباط الخير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">صفرو</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مولاي يعقوب</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أكوراي</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">عين تاوجطات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الحاجب</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سبع عيون</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أكنول</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">واد أمليل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تاهلة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تازة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">غفساي</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">قرية با محمد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تاونات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">طهر السوق</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تيسة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أزرو</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إفران</li>
+					</ul>
+
+					<ul class="side4">
+						<h4>4- جهة الرباط سلا القنيطرة</h4>
+						<li onclick="GetCityPrayerTime(this.textContent);">سلا</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الرباط</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تمارة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">القنيطرة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الخميسات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">التواركة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي بوقنادل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">عين العودة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">هرهورة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الصخيرات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">عين عتيق</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مهدية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي يحيى الغرب</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سوق الأربعاء</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الرماني</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تيفلت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي علال البحراوي</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">دار الڭداري</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">احد كورت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">جرف الملحة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مشرع بلقصيري</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي قاسم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي سليمان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي يحيى الغرب</li>
+					</ul>
+
+					<ul class="side5">
+						<h4>5- جهة بني ملال خنيفرة</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">بني ملال</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">القصيبة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">قصبة تادلة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">زاوية الشيخ</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أبي الجعد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوجنيبة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">حطان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">خريبكة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">وادي زم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مريرت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">خنيفرة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أزيلال</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">دمنات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولاد عياد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سوق السبت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولاد النمة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الفقيه بنصالح</li>
+					</ul>
+
+					<ul class="side6">
+						<h4>6- جهة الدار البيضاء سطات</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">الدار البيضاء</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المحمدية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سطات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الجديدة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">عين حرودة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بن أحمد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">البروج</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">لولاد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولاد امراح</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">برشيد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الدروة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الكارة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">حد السوالم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولاد عبو</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي رحال الشاطئ</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بن سليمان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوزنيقة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المنصورية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي بنور</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">زمامرة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">النواصر</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوسكورة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">دار بوعزة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الهراويين</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">مديونة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تيط مليل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أزمور</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">البئر الجديد</li>
+					</ul>
+
+					<ul class="side7">
+						<h4>7- جهة مراكش آسفي</h4>
+						<li onclick="GetCityPrayerTime(this.textContent);">مراكش</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المشور القصبة</li>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">آيت أورير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أمزميز</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تحناوت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">شيشاوة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إمنتانوت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">قلعة السراغنة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي رحال</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تملالت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الصويرة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">آسفي</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">جماعة سحيم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سبت كزولة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">ابن جرير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي بوعثمان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">اليوسفية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الشماعية</li>
+					</ul>
+
+					<ul class="side8">
+						<h4>8- جهة درعة تافيلالت</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">أرفود</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوذنيب</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الرشيدية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">كلميمة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الجرف الشريف بن علي</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تنجداد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أكدز</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">زاكورة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">ميدلت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الريش</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">ورززات</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تازناخت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تنغير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بومالن دادس</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">قلعة مڭونة</li>
+					</ul>
+
+					<ul class="side9">
+						<h4>9- جهة سوس ماسة</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">أكادير</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أيت ملول</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الدشيرة الجهادية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إنزكان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">القليعة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">آيت ايعزة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولوز</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الكردان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">إيغرم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولاد برحيل</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أولاد تايمة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تاليوين</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تارودانت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تافراوت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">تزنيت</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">آيت باها</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بيوكرة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">أقا</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">فم الحصن</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">فم زڭيد</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">طاطا</li>
+					</ul>
+
+					<ul class="side10">
+						<h4>10- جهة كلميم واد نون</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">آسا</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الزاك</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">كلميم</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بويزكارن</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">طانطان</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الوطية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">سيدي إفني</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الاخصاص</li>
+					</ul>
+
+					<ul class="side11">
+						<h4>11- جهة العيون الساقية الحمراء</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">العيون</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">المرسى</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">طرفاية</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">بوجدور</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">السمارة</li>
+					</ul>
+
+					<ul class="side12">
+						<h4>12-جهة الداخلة وادي الذهب</h4>
+
+						<li onclick="GetCityPrayerTime(this.textContent);">الداخلة</li>
+						<li onclick="GetCityPrayerTime(this.textContent);">الكويرة</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+
+		<!-- linked axios library :  -->
+		<script src="../../node_modules/axios/dist/axios.min.js"></script>
+
+		<script src="./js/source.js"></script>
+		<script src="./js/logic.js"></script>
+		<script src="./js/app.js"></script>
+	</body>
+</html>
