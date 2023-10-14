@@ -10,7 +10,7 @@ function userInfo(email, password) {
 
 window.onload = function () {
 	if (loginToken != "") {
-		window.location.href = "http://127.0.0.1:5501/asignement/6-assignment%2017.1/html/home.html";
+		window.location.href = "https://ayoubmajid67.github.io/summar-2023/js/HIGT%20LEVEL/asignement/6-assignment%2017.1/html/home.html";
 	}
 };
 
@@ -25,7 +25,7 @@ function login(user) {
 		.then((Token) => {
 			loginToken = Token.token;
 			localStorage.setItem("userToken", loginToken);
-			window.location.href = "http://127.0.0.1:5501/asignement/6-assignment%2017.1/html/home.html";
+			window.location.href = "https://ayoubmajid67.github.io/summar-2023/js/HIGT%20LEVEL/asignement/6-assignment%2017.1/html/home.html";
 		})
 		.catch((error) => {
 			alert(error.response.data.error);

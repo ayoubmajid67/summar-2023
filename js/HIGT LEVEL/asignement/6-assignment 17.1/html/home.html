@@ -59,21 +59,28 @@
                 text-wrap: nowrap;
              }
 
-
+        
             }
 		</style>
 	</head>
 	<body>
+      
 		<div class="container">
 			<h1><span>y</span>ou <span>l</span>ogin with <span>s</span>uccessfully</h1>
             <button id="signOut" onclick="signOut();" >Sign out</button>
 		</div>
 
         <script>
+            window.onload=function(){
+
+              if(!localStorage.getItem("userToken")) 
+              window.location.href='https://ayoubmajid67.github.io/summar-2023/js/HIGT%20LEVEL/asignement/6-assignment%2017.1/html/login.html'; 
+
+            }
           function  signOut(){
 
           localStorage.clear(); 
-          window.location.href='http://127.0.0.1:5501/asignement/6-assignment%2017.1/html/login.html'
+          window.location.href='https://ayoubmajid67.github.io/summar-2023/js/HIGT%20LEVEL/asignement/6-assignment%2017.1/html/login.html'
 
           }
         </script>
