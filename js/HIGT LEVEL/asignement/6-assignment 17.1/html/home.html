@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<style>
+            *{
+                padding: 0;
+                margin: 0; 
+                box-sizing: border-box;
+            }
+			.container {
+				width: 100%;
+				height: 100vh;
+				display: flex;
+                gap: 15px;
+                flex-wrap: wrap-reverse;
+				justify-content: center;
+				align-items: center;
+                align-content: center;
+				background: linear-gradient(60deg, rgb(3, 76, 89), rgba(113, 86, 7, 0.933));
+				color: white;
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+			}
+            #signOut, 
+			.container h1 {
+				padding: 24px 30px;
+
+				border-radius: 14px;
+				font-size: 2.4em;
+				font-variant: small-caps;
+			}
+			.container h1 span {
+				color: red;
+				text-transform: capitalize;
+			}
+            #signOut{
+                font-size: 1.7em;
+                background-color: rgba(255, 255, 255, 0.688);
+                font-weight: 700;
+                 transition: 0.4s;
+            }
+            #signOut:hover{
+                color: rgb(10, 84, 84);
+            }
+
+            @media (max-width:650px){
+             body{
+                font-size: 0.7em;
+             }
+              .container{
+            flex-direction: column;
+                
+             }
+             .container h1{
+                font-size: 1.4em;
+                text-wrap: nowrap;
+             }
+
+
+            }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1><span>y</span>ou <span>l</span>ogin with <span>s</span>uccessfully</h1>
+            <button id="signOut" onclick="signOut();" >Sign out</button>
+		</div>
+
+        <script>
+          function  signOut(){
+
+          localStorage.clear(); 
+          window.location.href='http://127.0.0.1:5501/asignement/6-assignment%2017.1/html/login.html'
+
+          }
+        </script>
+	</body>
+</html>

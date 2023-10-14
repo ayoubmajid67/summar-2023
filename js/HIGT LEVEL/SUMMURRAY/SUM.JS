@@ -1223,3 +1223,110 @@ async function ChangeTitlesVisibility() {
 }
 
 ChangeTitlesVisibility();
+
+//Authentication :
+
+//https://reqres.in/
+
+//type of token :
+
+// Bearer token : (headers)  Authorization =Bearer token 
+// normal token : (headers)  Authorization = token 
+
+
+//login :
+let loginUrl = "https://reqres.in/api/login";
+let UserUrl = "https://reqres.in/api/users";
+
+let loginToken= localStorage.getItem("userToken") || "";
+function login() {
+	axios
+		.post(loginUrl, {
+			email: "tracey.ramos@reqres.in",
+			password: "cityslicka",
+		})
+		.then((response) => response.data)
+
+		.then((Token) => {
+			console.log(Token);
+			loginToken = Token.token;
+			localStorage.setItem("userToken",loginToken); 
+			createNewUser(); 
+		})
+		.catch((error) => {
+			alert(error);
+		});
+}
+
+
+function createNewUser() { 
+	let config = {
+        headers: {
+            "Authorization": "Bearer " + loginToken,
+        },
+    };
+
+    axios
+        .post(
+            UserUrl,
+            {
+                name: "majid",
+                job: "leader",
+            },
+            config
+        )
+        .then((response) => response.data)
+        .then((newUserInfo) => {
+            console.log(newUserInfo);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+ login(); 
+
+
+/*
+by using the login function we send request to api then api
+generate a token that we received  then save in local Storage 
+
+to provide to use enter directly to his account 
+
+without the need to login again by using  CreateUser function : 
+that take Token from local Storage then created a new user 
+ 
+
+*/ 
+/*
+To navigate to another page using JavaScript, you can use the `window.location` object.
+ Here are a few common ways to achieve this:
+
+### 1. Using `window.location.href`:
+You can set the `window.location.href` property to the URL of the page you want to navigate to. For example:
+
+```javascript
+// Navigate to a new page
+window.location.href = "https://www.example.com/newpage.html";
+```
+
+### 2. Using `window.location.assign()` method:
+The `assign()` method of the `window.location` object is another way to navigate to a new page:
+
+```javascript
+// Navigate to a new page
+window.location.assign("https://www.example.com/newpage.html");
+```
+
+### 3. Using `window.location.replace()` method:
+The `replace()` method of the `window.location` object can be used to navigate to a new page and replace the current
+ page in the browser history. This means the user cannot navigate back to the original page using the browser's back button.
+
+```javascript
+// Navigate to a new page and replace the current page in the browser history
+window.location.replace("https://www.example.com/newpage.html");
+```
+
+Choose the appropriate method based on your specific use case and whether you want the new
+ page to be added to the browser history or replace the current page.
+*/
