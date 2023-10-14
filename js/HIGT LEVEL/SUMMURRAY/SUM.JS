@@ -998,3 +998,228 @@ function getUsersAxios() {
  or :
  <script src="../node_modules/axios/dist/axios.min.js"></script>
 */
+
+
+// await and async :
+
+// simple way to get Users and Posts using simple fetch 
+// without apply await ans async keyWord 
+
+/*
+but firstly let's introduce the two fundamentals :
+
+await: to keep the js await until an async code finished 
+it's veery useful when you handel with api settimeout .. 
+and many foundations in js : 
+// important notion about it : 
+
+be carefully because  you can use await only in an async function : 
+
+
+
+let's   freaking out the second concept : 
+
+async : this keyword using the define an async function : 
+and it's provide as to use the async keyword into  functions 
+and make the function automatically return   Promise 
+and the return keyword Represent the Resolve() function in the promise 
+
+async functionName(){
+// async code 
+
+return  Anything   // resolve(Anything)
+}
+
+*/
+
+// version 1: 
+/* 
+in this version bellow  : the code is writing
+just with fetch functions without using  await and async 
+keyword 
+
+ how can see that's the implementation of it 
+
+ it's a little bit difficult to Read an maintain :
+
+ specially  when you work on multiple then in the same promise : 
+
+
+and for that the await an async founded to solve this problem exactly 
+
+features of await and async  :
+
+1-more readability of code : 
+2- easy the maintain
+*/
+let usersUrl = "https://jsonplaceholder.typicode.com/users";
+let postsUrl = "https://jsonplaceholder.typicode.com/posts/?userId=";
+
+/*
+now let's develop  this code : 
+and make it more useful 
+by  Provide  to getUsers first then get  Posts after it : 
+following the order : 
+
+*/
+function getUsers() {
+	// fetch the data from api placeholder api :
+	return new Promise((resolve, reject) => {
+		fetch(usersUrl)
+			.then((response) => {
+				// check status if ok or not :
+
+				if (!response.ok) throw new Error(response.statusText);
+
+				return response.json();
+			})
+			.then((Users) => {
+				console.log("All Users : ", Users);
+				resolve("Success to get User Response : ");
+			})
+			.catch((error) => {
+				console.log(error);
+				reject("failed to get User Response there has been an error");
+			});
+	});
+}
+
+function getPosts(UserId) {
+	// fetching data from basic PostsUrl +UserId;
+	return new Promise((resolve, reject) => {
+		fetch(postsUrl + UserId)
+			.then((response) => {
+				// check status if ok or not :
+
+				if (!response.ok) throw new Error(response.statusText);
+
+				return response.json();
+			})
+			.then((posts) => {
+				console.log(`Posts  Related to User[${UserId}]`, posts);
+				resolve("Success to get the  API response  ");
+			})
+			.catch((error) => {
+				console.log(error);
+				reject("there has been an error during  fetching the API Response");
+			});
+	});
+}
+
+getUsers()
+	.then(() => getPosts(1))
+	.catch((error) => {
+		console.log("Error :", error);
+	});
+
+ // In the provided code:
+
+
+  async function fetchData() {
+    try {
+      let response = await fetch('https://api.example.com/data');
+      let data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
+
+// version 2 with await  and async functions  :
+async function getUsers() {
+	let response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+	if (!response.ok)  return response.statusText; 
+	let Users = await response.json();
+
+	console.log('Users',Users);
+    return;
+}
+
+let PostUrl = "https://jsonplaceholder.typicode.com/posts/?userId=";
+
+async function getPosts(UserId) {
+	let response = await fetch(PostUrl + UserId);
+
+	if (!response.ok)  return response.statusText; 
+	let Posts = await response.json();
+
+	console.log(`Posts[${UserId}]`, Posts);
+    return;
+}
+
+async function getData(){
+
+  await  getUsers();
+    getPosts(1);
+    
+}
+
+getData(); 
+
+
+  /*
+
+  The `throw error;` statement inside the `catch` block is throwing the error again 
+  after it has been logged. When an error is
+   thrown within a `catch` block, it propagates the error up the call stack. In the 
+   context of an `async` function like `fetchData()`,
+    if you call `fetchData()`, and an error occurs during the execution of `fetchData()`, 
+    the function will reject with the thrown error.
+  
+  Here's how it works:
+  
+  1. The `fetch` API is used to make an HTTP request to 'https://api.example.com/data'.
+  2. If the request fails (for example, due to network issues or an invalid URL),
+   `fetch` will reject with an error.
+
+  3. The `await fetch(...)` expression inside the `try` block will throw an error.
+  4. The code inside the `catch` block will execute, logging the
+   error to the console using `console.error('Error fetching data:', error);`.
+
+  5. After logging the error, `throw error;` 
+  re-throws the error, causing the `fetchData()` function to reject with this error.
+  
+  When you call `fetchData()`, you can handle the rejection 
+  by using `.catch()` or `try/catch` blocks in the calling code. For example:
+
+  */
+  ///javascript
+  fetchData()
+    .then(data => {
+      // Handle successful data retrieval
+      console.log('Data:', data);
+    })
+    .catch(error => {
+      // Handle the error from fetchData() here
+      console.error('Error in fetchData():', error);
+    });
+
+  
+  /*
+  In this case, if there's an error during the execution of `fetchData()`, 
+  it will be caught in the `.catch()` block, where you can handle 
+  it appropriately.
+  */
+
+  // example 2: 
+  let titles = document.querySelectorAll("h1");
+
+function changeVisibility(index) {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			titles[index].style.visibility = "visible";
+			resolve(index);
+		}, 1000);
+	});
+}
+
+async function ChangeTitlesVisibility() {
+	for (let i = 0; i < titles.length; i++) {
+		await changeVisibility(i);
+	}
+}
+
+ChangeTitlesVisibility();
