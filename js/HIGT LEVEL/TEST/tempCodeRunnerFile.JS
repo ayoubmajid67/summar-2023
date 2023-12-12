@@ -1,1 +1,2 @@
-document.querySelector("h2").innerText+=" done"; 
+
+ getUsers(users); 

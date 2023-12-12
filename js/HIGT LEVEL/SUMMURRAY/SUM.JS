@@ -18,7 +18,7 @@ try {
 //  let obj= new className() 
 let request=new XMLHttpRequest(); 
 
-//  open function :  top  Prepare a request.: obj.open("type","url"); 
+//  open function :  to  Prepare a request.: obj.open("type","url"); 
 request.open("get","https://jsonplaceholder.typicode.com/posts"); 
 // specify  the type of  response : 
  request.responseType="json";  
@@ -135,7 +135,7 @@ request.onload = function () {
 
 
 /*
-In JavaScript, you can work with network requests using the `XMLHttpRequest` object or the more
+In JavaScript,you can work with network requests using the `XMLHttpRequest` object or the more
  modern `fetch` API
 . When dealing with network requests, you typically encounter various states in the lifecycle 
 of the request. Here's 
@@ -190,6 +190,32 @@ xhr.onreadystatechange = function () {
 };
 
 xhr.send(); // Initiate the request
+
+// add headers params : 
+xhr.setRequestHeader("HeaderName1", "HeaderValue1");
+xhr.setRequestHeader("HeaderName2", "HeaderValue2");
+
+// send data : 
+
+// Set the Content-Type header if you're sending JSON data
+/*
+Yes, setting the Content-Type header to "application/json" using xhr.setRequestHeader("Content-Type", 
+"application/json"); is a common practice when you're sending JSON data in the body of an XMLHttpRequest.
+ This header informs the server that the request body contains JSON-formatted data.
+*/
+xhr.setRequestHeader("Content-Type", "application/json");
+
+// Create an object with the data you want to send
+var data = {
+    key1: "value1",
+    key2: "value2"
+};
+
+// Convert the object to a JSON string
+var jsonData = JSON.stringify(data);
+
+// Send the JSON data in the body of the request
+xhr.send(jsonData);
 
 /*
 **Using the Fetch API:**
@@ -616,14 +642,16 @@ p.catch((ErrorMsg) => {
 
 /*
 
-Hello world is printed first because the JavaScript engine executes code synchronously, line by line.
- When the engine reaches the `console.log("hello world");` line, it executes it immediately and prints
-  "hello world" to the console.
+Hello world is printed first because the JavaScript engine executes code synchronously,
+ line by line. When the engine reaches the `console.log("hello world");` line, 
+ it executes it immediately and printsm "hello world" to the console.
 
-The `Promise` object is asynchronous, meaning that the code inside of the `then()` and `catch()` 
-callbacks will not be executed until the promise is fulfilled or rejected. In this case, the promise 
-is fulfilled immediately, but the engine does not execute the `then()`
- callback until after it has finished executing   the rest of the code in the script.
+The `Promise` object is asynchronous, meaning that the code inside of the `then()` 
+and `catch()` 
+callbacks will not be executed until the promise is fulfilled or rejected.
+ In this case, the promise , is fulfilled immediately, but the engine does not execute
+  the `then()` callback until after it has finished executing 
+   the rest of the code in the script.
 
 To see this in action, you can add a `setTimeout()` function to the `then()` callback:
 */
@@ -646,7 +674,8 @@ console.log("hello world");
 ```
 /*
 
-Now, when you run the script, you will see "hello world" printed to the console immediately, followed by
+Now, when you run the script, you will see "hello world" printed to the 
+ immediately, followed by
  the success message from the promise one second later.
 
 This is the behavior of the JavaScript engine because it is designed to be efficient. 
@@ -693,9 +722,12 @@ new Promise((resolve, reject) => {
 
   // fetch function : 
   ```
-  fetch is a JavaScript function that allows you to make network requests (typically HTTP requests) to
-  fetch resources from a network, such as JSON data from a REST API, HTML from a website, or other types
-  of data. It's widely used in modern web development for making asynchronous requests to web servers.
+  fetch is a JavaScript function that allows you to make network requests
+   (typically HTTP requests) to
+  fetch resources from a network, such as JSON data from a REST API, HTML 
+  from a website, or other types
+  of data. It's widely used in modern web development for making asynchronous 
+  requests to web servers.
   ```
   fetch(url, options)
 /*
@@ -892,6 +924,43 @@ function GetPosts(UserId) {
 	});
 }
 
+// Define the URL for the API endpoint
+const Url = 'https://api.example.com/endpoint';
+
+// Create an object with the data you want to send in the request body
+const data = {
+  param1: 'value1',
+  param2: 'value2'
+};
+
+// Create the request options, including method, headers, and body
+const requestOptions = {
+  method: 'POST', // or 'GET', 'PUT', 'DELETE', etc.
+  headers: {
+    'Content-Type': 'application/json' // specify the content type if sending JSON data
+    // Add any other headers if needed
+  },
+  body: JSON.stringify(data) // Convert the data object to a JSON string
+};
+
+// Use the fetch function to make the request
+fetch(Url, requestOptions)
+  .then(response => {
+    // Check if the request was successful (status code 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    // Parse the response JSON
+    return response.json();
+  })
+  .then(data => {
+    // Do something with the data returned from the API
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle errors
+    console.error('Fetch error:', error);
+  });
 
 
 //axios in js :  get Users Using axios library : 
@@ -980,7 +1049,7 @@ function getUsersAxios() {
   in the package file then it will install it and add  to your 
   project 
   very helpful when you work in a team and you want to install the library 
-  of  your team to work with, you just need to get the package file 
+  of  your team to work with,just  you  need to get the package file 
   then write the npm install command then the npm will install 
   all library  in the package.json with the same specification : 
 
@@ -1219,6 +1288,7 @@ function changeVisibility(index) {
 async function ChangeTitlesVisibility() {
 	for (let i = 0; i < titles.length; i++) {
 		await changeVisibility(i);
+
 	}
 }
 
@@ -1284,14 +1354,93 @@ function createNewUser() {
         });
 }
 
+
+// using await and async  function : 
+
+// let loginUrl = "https://reqres.in/api/login";
+// let UserUrl = "https://reqres.in/api/users";
+let registerUrl = "https://reqres.in/api/register";
+
+// let loginToken = localStorage.getItem("userToken") || "";
+
+let bodyPrams = {
+	email: "tracey.ramos@reqres.in",
+	password: "cityslickda",
+};
+
+async function login() {
+	try {
+		let response = await axios.post(loginUrl, bodyPrams);
+
+		let token = response.data;
+		console.log(token);
+		localStorage.setItem("userToken", token.token);
+	} catch (error) {
+		console.log("Error : ", error.message);
+	}
+}
+
+// let headers = {
+// 	Authorization: "Bearer " + loginToken,  
+// };
+
+let UserINfo = {
+	name: "majid",
+	job: "leader",
+};
+async function createNewUser() {
+	try {
+		let response = await axios.post(UserUrl, UserINfo, headers);
+
+		let newUserInfo = response.data;
+		console.log(newUserInfo);
+	} catch (error) {
+		console.log("Error : ", error.message);
+	}
+}
+
+async function register() {
+	try {
+		let response = await axios.post(registerUrl, bodyPrams);
+
+		let registerInfo = response.data;
+		console.log(registerInfo);
+		console.log("token : ", registerInfo.token);
+		localStorage.setItem("userToken", registerInfo.token);
+	} catch (error) {
+		console.log("Error : ", error.message);
+	}
+}
+
+async function main() {
+	console.log("\nRegister new user : ");
+	await register();
+
+	console.log("\nlogin to my created account  : ");
+	await login();
+
+	console.log("\ncreate a new user using my token : ");
+	await createNewUser();
+}
+
+main();
+
+
  login(); 
 
+// delay function : 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+ // CHANGE PAGE : 
+ window.location.assign("NewPageName.html"); 
 
 /*
 by using the login function we send request to api then api
 generate a token that we received  then save in local Storage 
 
-to provide to use enter directly to his account 
+to provide to user enter directly to his account 
 
 without the need to login again by using  CreateUser function : 
 that take Token from local Storage then created a new user 
@@ -1319,8 +1468,10 @@ window.location.assign("https://www.example.com/newpage.html");
 ```
 
 ### 3. Using `window.location.replace()` method:
-The `replace()` method of the `window.location` object can be used to navigate to a new page and replace the current
- page in the browser history. This means the user cannot navigate back to the original page using the browser's back button.
+The `replace()` method of the `window.location` object can be used 
+to navigate to a new page and replace the current
+ page in the browser history. This means the user cannot navigate
+  back to the original page using the browser's back button.
 
 ```javascript
 // Navigate to a new page and replace the current page in the browser history
@@ -1329,4 +1480,97 @@ window.location.replace("https://www.example.com/newpage.html");
 
 Choose the appropriate method based on your specific use case and whether you want the new
  page to be added to the browser history or replace the current page.
-*/
+
+Authentication and tokens are fundamental concepts in the realm of security
+ and identity management, especially in the context of web applications and 
+ APIs. Let's explore these concepts in detail:
+
+### Authentication:
+
+Authentication is the process of verifying the identity of a user, application,
+ or system. It ensures that the entity trying to access a resource is who it claims to be
+ . There are various methods of authentication, each with its own strengths and use cases:
+
+1. **Username/Password:**
+   - The user provides a username and password.
+   - Common for web applications and traditional login systems.
+   - Vulnerable to various attacks, such as phishing.
+
+2. **Multi-Factor Authentication (MFA):**
+   - Requires multiple forms of identification (e.g., password + SMS code or fingerprint).
+   - Enhances security by adding an additional layer of verification.
+
+3. **Token-Based Authentication:**
+   - Uses tokens (e.g., JSON Web Tokens) for authentication.
+   - Reduces the need to store sensitive credentials on the client.
+   - Often used in modern web applications and APIs.
+
+4. **OAuth and OpenID Connect:**
+   - Delegated authorization and authentication protocols.
+   - OAuth allows secure delegated access to resources.
+   - OpenID Connect is an identity layer on top of OAuth, providing authentication.
+
+### Tokens:
+
+Tokens play a crucial role in modern authentication and authorization systems. 
+They are used to represent the authenticated user and provide secure access 
+to protected resources. The most common types of tokens are:
+
+1. **Access Tokens:**
+   - Grants access to specific resources on behalf of the user.
+   - Short-lived and specific to the user and application.
+   - Used in OAuth for authorization.
+
+2. **Refresh Tokens:**
+   - Used to obtain a new access token.
+   - Longer-lived than access tokens.
+   - Stored securely on the client.
+
+3. **JSON Web Tokens (JWT):**
+   - A compact, URL-safe means of representing claims between two parties.
+   - Self-contained, containing information about the user or system.
+   - Often used as access tokens in token-based authentication.
+
+### Token-Based Authentication Flow:
+
+1. **User Authentication:**
+   - The user provides credentials (e.g., username/password) to the authentication server.
+
+2. **Token Issuance:**
+   - Upon successful authentication, the authentication server generates an access token 
+   (and optionally a refresh token).
+
+3. **Token Storage:**
+   - The access token is stored securely on the client (e.g., in a cookie or local storage).
+
+4. **Token Usage:**
+   - The client includes the access token in the headers of API requests to access protected resources.
+
+5. **Token Expiry and Refresh:**
+   - Access tokens have a limited lifespan. If they expire, the client can use the refresh 
+   token to obtain a new access token without requiring the user to re-enter credentials.
+
+### Benefits of Token-Based Authentication:
+
+1. **Statelessness:**
+   - No need to store user sessions on the server.
+   - Each request contains the necessary authentication information.
+
+2. **Scalability:**
+   - Stateless nature simplifies scaling, as there's no need to synchronize session state
+    across multiple servers.
+
+3. **Security:**
+   - Tokens can be encrypted and signed to ensure integrity and confidentiality.
+   - Reduced risk of Cross-Site Request Forgery (CSRF) and session hijacking.
+
+4. **Decoupling Frontend and Backend:**
+   - The frontend and backend can be developed independently, as long as they adhere to the token contract.
+
+In summary, authentication verifies the identity of a user or application, while tokens play a crucial 
+role in securely representing and granting access to resources. Token-based authentication,
+ especially using technologies like OAuth and JWTs, has become a standard in modern web development 
+ due to its security, scalability, and flexibility.
+
+
+ */

@@ -84,7 +84,7 @@ element.addEventListener("event",function(){
 
 //  numbers :__________________ 
 
-// check if a number NaN or not :  
+// check if a number NaN or not :   (check is a number or not )
 isNaN(number);  
 
 //math library :_______________  
@@ -480,8 +480,7 @@ let variablesName=(argument)=>{
 
 // var  =>  general   : 
  var x; 
-
-// function => local  : (function scope)
+// f => local  : (function scope)
 function functionName(){}
 
 // let => local  : 
@@ -615,6 +614,9 @@ newArray = (Array.prototype.filterTest = (handel, array) => {
 console.log("\nthe using of the filter function : ");
 console.log(newArray);
 
+
+
+// reduce functions : 
 newArray = (Array.prototype.reduceTest = (handel, array) => {
   let newArray = [];
   let total = 0;
@@ -747,11 +749,15 @@ console.log(person["address"]["zipCode"]);  // Output: "10001"
 
 // Destructuring Assignment_____________________________________:
 ```
-Destructuring assignment is a feature introduced in ES6 (ECMAScript 2015) that allows you to extract values from arrays or properties from objects into distinct variables. It provides a concise and convenient way to unpack values from complex data structures like arrays and objects.
+Destructuring assignment is a feature introduced in ES6 (ECMAScript 2015) that allows you to extract
+ values from arrays or properties from objects into distinct variables. It provides a concise and
+ 
+ convenient way to unpack values from complex data structures like arrays and objects.
 
 ## Array Destructuring:
 
-In array destructuring, you can extract elements from an array and assign them to variables in a single line. The syntax uses square brackets [] on the left side of the assignment.
+In array destructuring, you can extract elements from an array and assign them to variables
+ in a single line. The syntax uses square brackets [] on the left side of the assignment.
 ```
 
 // Array with values
@@ -866,7 +872,7 @@ setInterval(() => {
 }, 1500);
 
 
-// get element by tag name : 
+// get elements by tag name : 
 var elements = document.getElementsByTagName("TagName");
 
 
@@ -1007,32 +1013,3 @@ element.classList.remove("className");
 // with arrays and objects more concise and expressive,
 // especially when dealing with complex data structures.
 // It is widely used in modern JavaScript applications.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
